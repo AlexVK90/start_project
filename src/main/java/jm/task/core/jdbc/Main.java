@@ -10,12 +10,14 @@ public class Main {
     public static void main(String[] args) throws SQLException {
 
         UserRepository userRepository = new UserRepositoryJDBCImpl();
-        //userRepository.createUsersTable();
+        userRepository.createUsersTable();
         userRepository.saveUser("Виталий","Жданов", (byte) 5);
         userRepository.saveUser("Семен","Хлопов", (byte) 6);
         userRepository.getAllUsers();
+        userRepository.editCurrentRow(1);
+        userRepository.getAllUsers();
         //userRepository.cleanUsersTable();
-        userRepository.dropUsersTable();
+        //userRepository.dropUsersTable();
 
     }
 }

@@ -17,4 +17,6 @@ public interface UserRepository {
     List<User> getAllUsers() throws SQLException;
 
     void cleanUsersTable() throws SQLException;
+
+    void editCurrentRow(int i) throws SQLException;
 }

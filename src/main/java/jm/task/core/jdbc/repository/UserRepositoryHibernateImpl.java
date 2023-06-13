@@ -2,6 +2,7 @@ package jm.task.core.jdbc.repository;
 
 import jm.task.core.jdbc.model.User;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class UserRepositoryHibernateImpl implements UserRepository {
@@ -37,6 +38,11 @@ public class UserRepositoryHibernateImpl implements UserRepository {
 
     @Override
     public void cleanUsersTable() {
+
+    }
+
+    @Override
+    public void editCurrentRow(int i) throws SQLException {
 
     }
 }
