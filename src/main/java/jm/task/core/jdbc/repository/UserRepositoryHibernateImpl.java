@@ -45,4 +45,9 @@ public class UserRepositoryHibernateImpl implements UserRepository {
     public void editCurrentRow(int i) throws SQLException {
 
     }
+
+    @Override
+    public boolean updateAgeByUserId(byte newAge, int id) {
+        return false;
+    }
 }

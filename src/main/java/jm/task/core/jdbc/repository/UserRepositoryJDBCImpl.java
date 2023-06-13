@@ -11,11 +11,7 @@ public class UserRepositoryJDBCImpl implements UserRepository {
     private Connection connection;
 
     public UserRepositoryJDBCImpl() throws SQLException {
-
-
-
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/class",  "root", "1234");
-
     }
 
     public void createUsersTable() throws SQLException {
@@ -122,6 +118,13 @@ public class UserRepositoryJDBCImpl implements UserRepository {
 
         }
 
+    }
+
+    @Override
+    public boolean updateAgeByUserId(byte newAge, int id) {
+        //возвращает false если не удалось выполнить обновление например нет такого пользователя в базе
+        //если изменеия сделать получилось должен вернуть true
+        return false;
     }
 
 }
