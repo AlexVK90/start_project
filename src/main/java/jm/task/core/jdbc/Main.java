@@ -15,6 +15,7 @@ public class Main {
         userRepository.saveUser("Семен","Хлопов", (byte) 6);
         userRepository.getAllUsers();
         userRepository.editCurrentRow(1);
+        userRepository.updateAgeByUserId((byte) 28, 1);
         userRepository.getAllUsers();
         //userRepository.cleanUsersTable();
         //userRepository.dropUsersTable();
