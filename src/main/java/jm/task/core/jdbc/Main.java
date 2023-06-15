@@ -9,6 +9,8 @@ import java.sql.*;
 public class Main {
     public static void main(String[] args) throws SQLException {
 
+        //SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+
         UserRepository userRepository = new UserRepositoryJDBCImpl();
         userRepository.createUsersTable();
         userRepository.saveUser("Виталий","Жданов", (byte) 5);
