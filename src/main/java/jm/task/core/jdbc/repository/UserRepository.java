@@ -18,8 +18,6 @@ public interface UserRepository {
 
     void cleanUsersTable() throws SQLException;
 
-    void editCurrentRow(int i) throws SQLException;
-
     boolean updateAgeByUserId(byte newAge, int id);
 
     List<User> getUserById(Long id);

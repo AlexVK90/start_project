@@ -2,7 +2,6 @@ package jm.task.core.jdbc.repository;
 
 import jm.task.core.jdbc.model.User;
 
-import java.security.Key;
 import java.sql.*;
 import java.util.List;
 
@@ -95,28 +94,6 @@ public class UserRepositoryJDBCImpl implements UserRepository {
         statement.executeUpdate("TRUNCATE childs");
 
         System.out.println("Список учеников очищен");
-
-    }
-
-    public void editCurrentRow (int id) throws SQLException {
-        //System.out.println("Введите id ученика для коррекции данных");
-        Statement statement = connection.createStatement();
-
-        System.out.println("Номер столбца для редактирования: 4");
-        int count = 2;
-        int value;
-        switch (count) {
-            case 2:
-                System.out.println("Введите новые данные для ячейки: 7");
-                statement.executeUpdate("UPDATE `class`.`childs` SET `age` = '7' WHERE (`ID` = '1')");
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            default:
-
-        }
 
     }
 
