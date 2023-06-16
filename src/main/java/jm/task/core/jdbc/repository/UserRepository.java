@@ -21,4 +21,6 @@ public interface UserRepository {
     void editCurrentRow(int i) throws SQLException;
 
     boolean updateAgeByUserId(byte newAge, int id);
+
+    List<User> getUserById(Long id);
 }

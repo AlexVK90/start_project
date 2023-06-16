@@ -127,4 +127,9 @@ public class UserRepositoryJDBCImpl implements UserRepository {
         return false;
     }
 
+    @Override
+    public List<User> getUserById(Long id) {
+        return null;
+    }
+
 }
