@@ -24,12 +24,32 @@ public class UserRepositoryHibernateImpl implements UserRepository {
     @Override
     public void createUsersTable() {
 
+        try (SessionFactory sessionFactory = configuration.buildSessionFactory();
+             Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+        String hql = "CREATE TABLE IF NOT EXISTS childs " +
+                "(id int NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
+                "name VARCHAR(50) NOT NULL, lastName VARCHAR(50) NOT NULL, " +
+                "age int NOT NULL)";
+
+         session.createNativeQuery(hql).executeUpdate();
+
+         session.getTransaction().commit();
     }
+    }
+
+
 
     @Override
     public void dropUsersTable() {
+        try (SessionFactory sessionFactory = configuration.buildSessionFactory();
+             Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.createNativeQuery("DROP TABLE IF EXISTS childs").executeUpdate();
 
 
+        }
     }
 
     @Override
@@ -44,7 +64,7 @@ public class UserRepositoryHibernateImpl implements UserRepository {
 //                newUser.setLastName(lastName);
 //                //newUser.setId(13L);
                 session.persist(new User(name, lastName, age)); // вызываю в сессии метод сохранения объекта который передал в параметры
-                System.out.println("Добавлен новый ученик: " + name);
+                //System.out.println("Добавлен новый ученик: " + name);
 
                 session.getTransaction().commit();
 
@@ -68,6 +88,9 @@ public class UserRepositoryHibernateImpl implements UserRepository {
                 session.remove(user);
                 System.out.println(user.toString() + " удален из списка");
             }
+            else {
+                System.out.println("id не найден");
+            }
             session.getTransaction().commit();
         }
 
@@ -83,7 +106,7 @@ public class UserRepositoryHibernateImpl implements UserRepository {
 
 
 
-        List list = session.createQuery("from childs").list();  // не знаю почему не видит название таблицы
+        List list = session.createQuery("from User").list();  // не знаю почему не видит название таблицы
 
         session.getTransaction().commit();
 
@@ -98,16 +121,27 @@ public class UserRepositoryHibernateImpl implements UserRepository {
              Session session = sessionFactory.openSession()) {
 
             session.beginTransaction();
-          //  session.createQuery("delete childs");
-
-            //System.out.println("Список учеников очищен");
+            session.createQuery("delete User").executeUpdate();
+            System.out.println("Список учеников очищен");
+            session.getTransaction().commit();
         }
 
     }
 
     @Override
     public boolean updateAgeByUserId(byte newAge, int id) {
-        return false;
+       try (SessionFactory sessionFactory = configuration.buildSessionFactory();
+            Session session = sessionFactory.openSession()){
+
+           session.beginTransaction();
+           session.get(User.class, id).setAge(newAge);
+           session.getTransaction().commit();
+       }
+       catch(Exception e){
+           return false;
+
+       }
+        return true;
     }
 
     @Override

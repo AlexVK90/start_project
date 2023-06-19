@@ -14,10 +14,13 @@ public class Main {
 
         UserRepository userRepository = new UserRepositoryHibernateImpl();
         //System.out.println(userRepository.getUserById(2L));
-        //System.out.println(userRepository.getAllUsers()); // не работает
-        //userRepository.removeUserById(2l);
+        //System.out.println(userRepository.getAllUsers());
+        //userRepository.removeUserById(4l);
         //userRepository.cleanUsersTable();
-        userRepository.saveUser("Семен", "Исаев", (byte) 7);
-
+        //userRepository.saveUser("Семен", "Исаев", (byte) 7);
+        //userRepository.saveUser("Иван", "Иванов", (byte) 9);
+        //userRepository.dropUsersTable();
+        //userRepository.createUsersTable();
+        //userRepository.updateAgeByUserId((byte) 14, 2);
     }
 }
